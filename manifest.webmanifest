@@ -1,0 +1,22 @@
+{
+  "name": "DataFlow Studio v14.0 — HMG Academy Edition",
+  "short_name": "DataFlow Studio",
+  "description": "70-module browser-native data operations workbench by HMG Academy.",
+  "start_url": "./app.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0d1117",
+  "theme_color": "#f6c453",
+  "lang": "en-NG",
+  "categories": ["business", "productivity", "education", "developer"],
+  "icons": [
+    { "src": "./assets/images/hmg-academy-logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/images/hmg-academy-logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Upload Data", "url": "./app.html#upload", "icons": [{ "src": "./assets/images/hmg-academy-logo.png", "sizes": "192x192" }] },
+    { "name": "AutoML", "url": "./app.html#ml", "icons": [{ "src": "./assets/images/hmg-academy-logo.png", "sizes": "192x192" }] },
+    { "name": "SQL Console", "url": "./app.html#sql", "icons": [{ "src": "./assets/images/hmg-academy-logo.png", "sizes": "192x192" }] }
+  ]
+}
