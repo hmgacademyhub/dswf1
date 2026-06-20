@@ -1,0 +1,15 @@
+# DataFlow Studio v14.0 — HMG Academy Edition
+# Cloudflare Pages Redirects
+
+/app                /app.html               301
+/dashboard          /app.html               301
+/modules            /modules.html           301
+/features           /features.html          301
+/pricing            /pricing.html           301
+/about              /about.html             301
+/docs               /docs.html              301
+/faq                /faq.html               301
+/contact            /contact.html           301
+/deployment         /deployment.html        301
+
+/*                  /404.html               404

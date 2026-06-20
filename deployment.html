@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-NG" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployment Guide | DataFlow Studio v14.0 — HMG Academy Edition</title>
+  <meta name="description" content="Step-by-step deployment guide for DataFlow Studio v14.0 to Vercel, Netlify, and Cloudflare Pages.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="./deployment.html">
+  <link rel="manifest" href="./static/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./assets/images/hmg-academy-logo.png">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="./" class="nav-brand">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" class="nav-brand-logo">
+      <div class="nav-brand-text"><strong>HMG Academy</strong><small>DataFlow Studio v14.0</small></div>
+    </a>
+    <button class="nav-toggle">☰</button>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="./features.html">Features</a>
+      <a href="./modules.html">70 Modules</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./about.html">About</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./app.html" class="nav-cta">🚀 Launch Studio</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb container"><a href="./">Home</a> › <span>Deployment</span></nav>
+
+<main class="content-page">
+  <div class="container">
+    <div class="flex items-center gap-3 mb-4">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" style="height:48px; width:auto; border-radius:6px;">
+      <span class="badge badge-gold">HMG Academy Edition</span>
+    </div>
+    <h1>🚀 Deployment Guide</h1>
+    <p class="lead">DataFlow Studio v14.0 is a 100% static site. Deploy to Vercel, Netlify, or Cloudflare Pages in minutes — all on free tiers. No build step, no runtime, no credit card required.</p>
+
+    <div class="alert alert-success mb-6">
+      <span>✅</span>
+      <div><strong>No build step required!</strong> Pure static site. No Node.js, no Python, no runtime. Just upload files.</div>
+    </div>
+
+    <h2>📋 Prerequisites</h2>
+    <ul>
+      <li>The <code>dswf v3/</code> folder contents</li>
+      <li>GitHub account (recommended for auto-deploys)</li>
+      <li>Account on one of: Vercel, Netlify, or Cloudflare Pages (all free)</li>
+    </ul>
+
+    <h2>🚀 Option 1: Deploy to Vercel (Recommended)</h2>
+    <h3>Method A: Via Dashboard (Easiest — 30 seconds)</h3>
+    <ol>
+      <li>Go to <a href="https://vercel.com/new" target="_blank" rel="noopener">vercel.com/new</a></li>
+      <li>Drag the <code>dswf v3/</code> folder onto the upload area OR click "Import Git Repository"</li>
+      <li>Configure:
+        <ul>
+          <li><strong>Framework Preset:</strong> Other</li>
+          <li><strong>Build Command:</strong> (leave empty)</li>
+          <li><strong>Output Directory:</strong> <code>.</code> (root)</li>
+          <li><strong>Install Command:</strong> (leave empty)</li>
+        </ul>
+      </li>
+      <li>Click <strong>Deploy</strong></li>
+      <li>Wait 30 seconds</li>
+      <li>✅ Site live at <code>https://your-project.vercel.app</code></li>
+    </ol>
+
+    <h3>Method B: Via Vercel CLI</h3>
+    <pre><code>cd "dswf v3"
+npx vercel --prod</code></pre>
+
+    <h3>Method C: GitHub Auto-Deploy</h3>
+    <pre><code>cd "dswf v3"
+git init
+git add .
+git commit -m "DataFlow Studio v14.0 — HMG Academy Edition"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
+git push -u origin main
+# Connect repo on Vercel → auto-deploys on every push</code></pre>
+
+    <p>The included <code>vercel.json</code> configures:</p>
+    <ul>
+      <li>Clean URLs (e.g. <code>/features</code> instead of <code>/features.html</code>)</li>
+      <li>Security headers (X-Frame-Options, X-Content-Type-Options, CSP)</li>
+      <li>Cache headers (1 year for assets, no cache for HTML)</li>
+      <li>URL rewrites (e.g. <code>/dashboard</code> → <code>/app.html</code>)</li>
+    </ul>
+
+    <h2>🚀 Option 2: Deploy to Netlify</h2>
+    <h3>Method A: Via Dashboard</h3>
+    <ol>
+      <li>Go to <a href="https://app.netlify.com/start" target="_blank" rel="noopener">app.netlify.com/start</a></li>
+      <li>Drag <code>dswf v3/</code> folder</li>
+      <li>Configure:
+        <ul>
+          <li><strong>Build command:</strong> (empty)</li>
+          <li><strong>Publish directory:</strong> <code>.</code> (root)</li>
+        </ul>
+      </li>
+      <li>Click <strong>Deploy site</strong></li>
+    </ol>
+
+    <h3>Method B: Via Netlify CLI</h3>
+    <pre><code>cd "dswf v3"
+npx netlify-cli deploy --prod --dir=.</code></pre>
+
+    <p>The included <code>netlify.toml</code> is auto-detected and applied.</p>
+
+    <h2>🚀 Option 3: Deploy to Cloudflare Pages</h2>
+    <p><strong>Best global CDN performance + unlimited bandwidth on free tier.</strong></p>
+    <h3>Method A: Via Dashboard</h3>
+    <ol>
+      <li>Cloudflare → Workers & Pages → Create application → Pages</li>
+      <li>Connect to Git (or drag folder via "Upload assets")</li>
+      <li>Configure:
+        <ul>
+          <li><strong>Build command:</strong> (empty)</li>
+          <li><strong>Build output directory:</strong> <code>.</code> (root)</li>
+        </ul>
+      </li>
+      <li>Save and Deploy</li>
+    </ol>
+
+    <h3>Method B: Via Wrangler</h3>
+    <pre><code>cd "dswf v3"
+npx wrangler pages deploy . --project-name=dataflow</code></pre>
+
+    <p>The <code>_redirects</code> and <code>_headers</code> files are auto-applied.</p>
+
+    <h2>🌐 Local Testing</h2>
+    <p>Test before deploying:</p>
+    <pre><code>cd "dswf v3"
+python3 -m http.server 8000
+# OR
+npx serve .
+# OR
+php -S localhost:8000</code></pre>
+    <p>Open <code>http://localhost:8000/</code> in your browser.</p>
+
+    <h2>🔒 Security Headers (Auto-Configured)</h2>
+    <ul>
+      <li><code>X-Content-Type-Options: nosniff</code></li>
+      <li><code>X-Frame-Options: SAMEORIGIN</code></li>
+      <li><code>Referrer-Policy: strict-origin-when-cross-origin</code></li>
+      <li><code>Permissions-Policy</code> (geolocation, mic, camera disabled)</li>
+      <li><code>Content-Security-Policy</code> (restricts script sources)</li>
+      <li><code>Strict-Transport-Security</code> (Netlify)</li>
+    </ul>
+
+    <h2>💰 Cost Comparison</h2>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead><tr><th>Platform</th><th>Free Tier</th><th>Bandwidth</th><th>Custom Domain</th></tr></thead>
+        <tbody>
+          <tr><td>Vercel</td><td>✅ Unlimited sites</td><td>100 GB/mo</td><td>Free + HTTPS</td></tr>
+          <tr><td>Netlify</td><td>✅ Unlimited sites</td><td>100 GB/mo</td><td>Free + HTTPS</td></tr>
+          <tr><td>Cloudflare</td><td>✅ Unlimited sites</td><td><strong>Unlimited</strong></td><td>Free + HTTPS</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3">For under 100K visitors/month, all three are 100% FREE.</p>
+
+    <h2>🔧 Post-Deployment</h2>
+    <ol>
+      <li>Update <code>sitemap.xml</code> with your actual domain</li>
+      <li>Update <code>robots.txt</code> sitemap URL</li>
+      <li>Submit sitemap to <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a></li>
+      <li>Verify PWA installation (Chrome DevTools → Application → Manifest)</li>
+      <li>Run Lighthouse audit (aim for 90+ scores)</li>
+    </ol>
+
+    <h2>🐛 Troubleshooting</h2>
+    <h3>Charts not rendering</h3>
+    <p>Open DevTools → Network tab → check for failed CDN requests to <code>cdn.jsdelivr.net</code>.</p>
+
+    <h3>SQL Console not working</h3>
+    <p><code>sql.js</code> requires WebAssembly (all modern browsers support it).</p>
+
+    <h3>Premium module shows lock</h3>
+    <p>That's intentional. See <a href="./pricing.html">pricing</a> or <a href="./contact.html">contact HMG Academy</a> to upgrade.</p>
+
+    <h3>Service Worker not registering</h3>
+    <p>Service workers require HTTPS (or localhost). All three platforms provide free HTTPS.</p>
+
+    <h2>🔐 Production Security Checklist</h2>
+    <ul>
+      <li>✅ Always use HTTPS</li>
+      <li>✅ Verify CDN library versions are pinned</li>
+      <li>✅ Don't expose subscription tokens in client code</li>
+      <li>✅ Audit your custom modifications before deployment</li>
+      <li>✅ Monitor usage via server-side logs (not in browser)</li>
+      <li>✅ Keep license tier validation server-side for production</li>
+    </ul>
+
+    <div class="text-center mt-8">
+      <a href="./app.html" class="btn btn-primary btn-lg">🚀 Launch App First</a>
+      <a href="./features.html" class="btn btn-outline btn-lg">📋 See Features</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="text-center text-muted">© 2026 HMG Academy · Built by <a href="https://cssadewale.pages.dev/">Adewale Samson Adeagbo</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

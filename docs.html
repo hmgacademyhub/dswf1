@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-NG" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation | DataFlow Studio v14.0 — HMG Academy Edition</title>
+  <meta name="description" content="Technical documentation for DataFlow Studio v14.0. Architecture, modules, deployment.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="./docs.html">
+  <link rel="manifest" href="./static/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./assets/images/hmg-academy-logo.png">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="./" class="nav-brand">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" class="nav-brand-logo">
+      <div class="nav-brand-text"><strong>HMG Academy</strong><small>DataFlow Studio v14.0</small></div>
+    </a>
+    <button class="nav-toggle">☰</button>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="./features.html">Features</a>
+      <a href="./modules.html">70 Modules</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./about.html">About</a>
+      <a href="./docs.html" class="active">Docs</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./app.html" class="nav-cta">🚀 Launch Studio</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb container"><a href="./">Home</a> › <span>Docs</span></nav>
+
+<main class="content-page">
+  <div class="container">
+    <div class="flex items-center gap-3 mb-4">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" style="height:48px; width:auto; border-radius:6px;">
+      <span class="badge badge-gold">HMG Academy Edition</span>
+    </div>
+    <h1>📚 Documentation</h1>
+    <p class="lead">Everything you need to understand, extend, and deploy DataFlow Studio v14.0.</p>
+
+    <h2>🏗️ Architecture</h2>
+    <p>DataFlow v14.0 is a <strong>100% client-side web application</strong>. No backend server, no database, no AI API calls. All processing happens in your browser using JavaScript.</p>
+
+    <h2>🔐 Security Architecture</h2>
+    <p>DataFlow v14.0 includes multi-layer security to prevent unauthorised access and tampering:</p>
+    <ul>
+      <li><strong>Content Security Policy (CSP)</strong> — restricts script sources to known CDN</li>
+      <li><strong>Security headers</strong> — X-Frame-Options, X-Content-Type-Options, Referrer-Policy</li>
+      <li><strong>License tier gating</strong> — premium modules require explicit upgrade</li>
+      <li><strong>Server-side verification (planned)</strong> — subscription tokens validated by HMG Academy server</li>
+      <li><strong>Integrity check</strong> — verifies required libraries are loaded</li>
+      <li><strong>Module sanitization</strong> — invalid module IDs rejected</li>
+      <li><strong>Rate limiting</strong> — prevents brute-force operations</li>
+    </ul>
+    <p>All access tiers are <strong>ultimately managed server-side by HMG Academy</strong> via subscription tokens delivered to verified paying customers. The browser-side checks are deterrents only.</p>
+
+    <h2>📦 Project Structure</h2>
+<pre>
+dswf v3/
+├── index.html              ← Landing page (SEO-optimized)
+├── app.html                ← Interactive studio (70 modules)
+├── features.html           ← Feature catalog
+├── modules.html            ← All 70 modules
+├── pricing.html            ← 4-tier pricing
+├── about.html              ← About + HMG ecosystem
+├── docs.html               ← This file
+├── faq.html                ← FAQ
+├── contact.html            ← Contact form
+├── deployment.html         ← Step-by-step deployment
+├── 404.html                ← Custom 404
+├── static/
+│   ├── manifest.webmanifest ← PWA manifest
+│   └── service-worker.js    ← Offline support
+├── assets/
+│   ├── css/
+│   │   ├── style.css       ← Design system (HMG gold)
+│   │   └── app.css         ← App-specific styles
+│   ├── js/
+│   │   ├── utils/
+│   │   │   ├── storage.js  ← localStorage + IndexedDB
+│   │   │   ├── security.js ← License tier gating
+│   │   │   ├── stats.js    ← Statistical functions
+│   │   │   ├── ml.js       ← ML algorithms
+│   │   │   └── export.js   ← Export utilities (.ipynb, .py, etc.)
+│   │   ├── core.js         ← State management + routing
+│   │   ├── modules.js      ← All 70 module renderers
+│   │   └── app.js          ← Initialization + actions
+│   └── images/
+│       └── hmg-academy-logo.png
+├── vercel.json             ← Vercel config
+├── netlify.toml            ← Netlify config
+├── _redirects              ← Cloudflare redirects
+├── _headers                ← Cloudflare headers
+├── robots.txt              ← SEO
+└── sitemap.xml             ← XML sitemap
+</pre>
+
+    <h2>📝 Export Capabilities — Generate Files</h2>
+    <p>DataFlow Studio v14.0 can generate and download these file types:</p>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead><tr><th>File Type</th><th>Use Case</th></tr></thead>
+        <tbody>
+          <tr><td><code>.ipynb</code> (Jupyter Notebook)</td><td>Runnable notebook with code cells, outputs, visualisations — open in JupyterLab, Colab, VS Code</td></tr>
+          <tr><td><code>.py</code> (Python script)</td><td>Standalone Pandas analysis script — run locally with `python analysis.py`</td></tr>
+          <tr><td><code>.csv</code></td><td>Comma-separated values for Excel, Tableau, etc.</td></tr>
+          <tr><td><code>.tsv</code></td><td>Tab-separated values</td></tr>
+          <tr><td><code>.json</code></td><td>Structured JSON</td></tr>
+          <tr><td><code>.xlsx</code> (Excel)</td><td>Microsoft Excel format</td></tr>
+          <tr><td><code>.html</code></td><td>Branded HTML report</td></tr>
+          <tr><td><code>.md</code> (Markdown)</td><td>Markdown documentation</td></tr>
+          <tr><td><code>.pdf</code></td><td>PDF report with charts and tables</td></tr>
+          <tr><td><code>Dockerfile</code></td><td>Reproducible Docker environment</td></tr>
+          <tr><td><code>requirements.txt</code></td><td>Python dependencies</td></tr>
+          <tr><td><code>environment.yml</code></td><td>Conda environment</td></tr>
+          <tr><td><code>workflow.json</code></td><td>Pipeline definition</td></tr>
+          <tr><td><code>openapi.json</code></td><td>REST API spec</td></tr>
+          <tr><td><code>audit_log.json</code></td><td>SOC2 audit trail</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>🔌 JavaScript API</h2>
+
+    <h3>Core (<code>Core</code>)</h3>
+<pre><code>Core.state           // Application state
+Core.loadFile(file)   // Load CSV/Excel/JSON
+Core.processData(rows, name) // Process raw data
+Core.navigate(mod)    // Navigate to module
+Core.getRows(limit)   // Get rows
+Core.getColumn(name)  // Get column
+Core.clear()          // Clear all data
+Core.toast(msg, type) // Show notification
+Core.openCmd()        // Open command palette</code></pre>
+
+    <h3>Security (<code>Security</code>)</h3>
+<pre><code>Security.canAccess(moduleId)       // Returns boolean
+Security.showUpgradePrompt(name, tier) // Show overlay
+Security.getTier()                  // Current user tier
+Security.integrityCheck()           // Verify libraries loaded
+Security.TIER_MAP                    // Required tier per module
+Security.TIER_NAMES                  // 'Free Trial', 'Essential', etc.</code></pre>
+
+    <h3>Stats (<code>Stats</code>)</h3>
+<pre><code>Stats.mean(arr), Stats.median(arr), Stats.std(arr)
+Stats.summary(arr)        // Returns all stats
+Stats.tTest(x, y)         // Welch's t-test
+Stats.chiSquareTest(observed)
+Stats.anova(groups)
+Stats.jarqueBera(arr)
+Stats.pearson(x, y), Stats.spearman(x, y)
+Stats.holtWinters(arr, alpha, beta, gamma, period, horizon)
+Stats.tfIdf(documents)
+Stats.sentimentScore(text)
+Stats.abTest(p1, p2, n)</code></pre>
+
+    <h3>ML (<code>ML</code>)</h3>
+<pre><code>ML.logisticRegression(X, y)
+ML.knn(X, y, k)
+ML.naiveBayes(X, y)
+ML.decisionTree(X, y, options)
+ML.randomForest(X, y, options)
+ML.linearRegression(X, y)
+ML.isolationForest(X, contamination)
+ML.labelEncode(arr)
+ML.oneHotEncode(arr)
+ML.selectKBest(X, y, k)
+ML.smote(X, y, targetClass, k, ratio)
+ML.autoML(X, y, problemType)
+ML.crossValidate(modelFactory, X, y, k, isRegression)</code></pre>
+
+    <h3>Exporter (<code>Exporter</code>)</h3>
+<pre><code>Exporter.exportCSV(columns, rows, filename)
+Exporter.exportJSON(columns, rows, filename)
+Exporter.exportExcel(columns, rows, filename)
+Exporter.exportTSV(columns, rows, filename)
+Exporter.exportPythonScript(columns, rows, filename)  // .py
+Exporter.exportIPYNB(title, sections, filename)        // .ipynb runnable
+Exporter.exportDockerfile(filename)                    // Dockerfile
+Exporter.exportRequirements(filename)                 // requirements.txt
+Exporter.exportDockerEnv(filename)                     // environment.yml
+Exporter.exportWorkflow(workflow, filename)
+Exporter.exportOpenAPI(name, version, schema, filename)
+Exporter.exportPDF(title, sections, filename)
+Exporter.exportHTMLReport(title, content, filename)
+Exporter.exportMarkdown(title, content, filename)
+Exporter.encodeShareURL(data)
+Exporter.decodeShareURL()</code></pre>
+
+    <h3>Storage (<code>Storage</code>)</h3>
+<pre><code>Storage.saveDataset(id, name, columns, rows, meta)
+Storage.loadDataset(id)
+Storage.listDatasets()
+Storage.deleteDataset(id)
+Storage.saveSnapshot(id, name, columns, rows, description)
+Storage.listSnapshots()
+Storage.logAudit(action, details)
+Storage.listAudit(limit)
+Storage.saveWorkflow(id, name, steps)
+Storage.listWorkflows()
+Storage.clearAll()</code></pre>
+
+    <h2>🔐 Security & Privacy</h2>
+    <ul>
+      <li>All processing happens in your browser. No data leaves your device.</li>
+      <li>No telemetry. No analytics by default.</li>
+      <li>No cookies. Only browser-native localStorage for preferences.</li>
+      <li>Content Security Policy (CSP) prevents XSS attacks</li>
+      <li>Security headers on all deployment platforms</li>
+      <li>License tier gating via signed tokens</li>
+      <li>Open source and auditable</li>
+    </ul>
+
+    <div class="text-center mt-8">
+      <a href="./app.html" class="btn btn-primary btn-lg">🚀 Launch App</a>
+      <a href="./deployment.html" class="btn btn-outline btn-lg">🚀 Deployment Guide</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="text-center text-muted">© 2026 HMG Academy · Built by <a href="https://cssadewale.pages.dev/">Adewale Samson Adeagbo</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

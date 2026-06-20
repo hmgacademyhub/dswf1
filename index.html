@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-NG" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>DataFlow Studio v14.0 — HMG Academy Edition | 70-Module Free Data Platform</title>
+  <meta name="description" content="The complete no-code data operations platform. 70 modules covering ingestion, cleaning, visualisation, statistics, machine learning, governance & compliance. 100% free tools, no AI API, runs entirely in your browser. Built by Adewale Samson Adeagbo for HMG Academy, a subsidiary of HMG Concepts, Lagos, Nigeria.">
+  <meta name="keywords" content="data analysis platform, machine learning, HMG Academy, Adewale Samson Adeagbo, data visualization, no-code, enterprise, NDPR, GDPR, free tools, browser-native, data science, SQL, privacy, compliance, Lagos Nigeria, HMG Concepts, data operations, ETL, business intelligence, free software, open source">
+  <meta name="author" content="Adewale Samson Adeagbo">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="DataFlow Studio">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="canonical" href="./">
+  <link rel="alternate" hreflang="en-NG" href="./">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="x-default" href="./">
+
+  <link rel="manifest" href="./static/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./assets/images/hmg-academy-logo.png">
+  <link rel="apple-touch-icon" href="./assets/images/hmg-academy-logo.png">
+
+  <meta property="og:title" content="DataFlow Studio v14.0 — HMG Academy Edition">
+  <meta property="og:description" content="70-Module browser-native data operations workbench. No AI API. No server. Free forever. Built by Adewale Samson Adeagbo for HMG Academy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="./">
+  <meta property="og:image" content="./assets/images/hmg-academy-logo.png">
+  <meta property="og:image:width" content="1536">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:locale" content="en_NG">
+  <meta property="og:site_name" content="DataFlow Studio — HMG Academy">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DataFlow Studio v14.0 — HMG Academy Edition">
+  <meta name="twitter:description" content="70-Module browser-native data operations workbench. No AI API. No server. Free forever.">
+  <meta name="twitter:image" content="./assets/images/hmg-academy-logo.png">
+  <meta name="twitter:creator" content="@cssadewale">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DataFlow Studio Ultimate v14.0 — HMG Academy Edition",
+    "alternateName": "DataFlow Studio",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Data Analytics Platform",
+    "operatingSystem": "Any (Web Browser)",
+    "browserRequirements": "Modern browser with JavaScript enabled and WebAssembly support",
+    "description": "The complete no-code data operations platform. 70 modules covering ingestion, cleaning, visualisation, statistics, machine learning, enterprise governance, and compliance. 100% client-side JavaScript. No AI API required, runs entirely in your browser. Built by Adewale Samson Adeagbo for HMG Academy (a subsidiary of HMG Concepts), Lagos, Nigeria.",
+    "url": "./",
+    "downloadUrl": "./app.html",
+    "screenshot": "./assets/images/hmg-academy-logo.png",
+    "softwareVersion": "14.0",
+    "softwareRequirements": "Modern web browser with JavaScript and WebAssembly",
+    "applicationCategory": "https://schema.org/BusinessApplication",
+    "featureList": [
+      "70 browser-native modules",
+      "Multi-format data ingestion (CSV, Excel, JSON, Parquet)",
+      "15-check data quality audit",
+      "6 imputation strategies",
+      "12+ chart types including 3D scatter, Sankey, Treemap",
+      "AutoML leaderboard with 7 algorithms",
+      "SQL console (in-browser SQLite)",
+      "Time series forecasting (Holt-Winters)",
+      "Isolation Forest anomaly detection",
+      "Privacy/PII masking (NDPR/GDPR compliant)",
+      "Data lineage tracking",
+      "Visual workflow pipeline",
+      "Compliance center (SOC2/NDPR)",
+      "Disaster recovery",
+      "Snapshots and rollback",
+      "TensorFlow.js neural network",
+      "Jupyter notebook (.ipynb) export",
+      "PDF/HTML/Markdown reports"
+    ],
+    "offers": [
+      { "@type": "Offer", "name": "Free Trial", "price": "0", "priceCurrency": "NGN" },
+      { "@type": "Offer", "name": "Essential", "price": "3500", "priceCurrency": "NGN" },
+      { "@type": "Offer", "name": "Professional", "price": "8500", "priceCurrency": "NGN" },
+      { "@type": "Offer", "name": "Enterprise", "price": "25000", "priceCurrency": "NGN" }
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Adewale Samson Adeagbo",
+      "url": "https://cssadewale.pages.dev/",
+      "jobTitle": "AI-Augmented Solutions Developer · Data Scientist · EdTech Builder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "HMG Concepts",
+        "url": "https://hmgconcepts.pages.dev/",
+        "foundingDate": "2015",
+        "address": { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
+        "subOrganization": {
+          "@type": "Organization",
+          "name": "HMG Academy",
+          "url": "https://hmgacademy.pages.dev/"
+        }
+      }
+    },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "247", "bestRating": "5" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HMG Concepts",
+    "url": "https://hmgconcepts.pages.dev/",
+    "logo": "./assets/images/hmg-academy-logo.png",
+    "description": "HMG Concepts is a Lagos-based EdTech and technology company founded in 2015 by Adewale Samson Adeagbo. Subsidiaries: HMG Academy (education), HMG Technologies (data tools), HMG Media (content), HMG Gospel (faith tech).",
+    "founder": { "@type": "Person", "name": "Adewale Samson Adeagbo" },
+    "subOrganization": [
+      { "@type": "Organization", "name": "HMG Academy", "url": "https://hmgacademy.pages.dev/" },
+      { "@type": "Organization", "name": "HMG Technologies", "url": "https://hmgtechnologies.pages.dev/" },
+      { "@type": "Organization", "name": "HMG Media", "url": "https://hmgmedia.pages.dev/" },
+      { "@type": "Organization", "name": "HMG Gospel", "url": "https://hmggospel.pages.dev/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Is DataFlow really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The 1-day trial is completely free with all 70 modules unlocked. No payment, no credit card, no AI API costs. The platform runs entirely in your browser." } },
+      { "@type": "Question", "name": "Do I need to install anything?", "acceptedAnswer": { "@type": "Answer", "text": "No installation required. Just open the URL in any modern browser. You can optionally install as a PWA (Progressive Web App) for offline access on any device." } },
+      { "@type": "Question", "name": "Is my data safe?", "acceptedAnswer": { "@type": "Answer", "text": "Your data never leaves your browser. All processing happens client-side using JavaScript. No server uploads, no API calls, no telemetry." } },
+      { "@type": "Question", "name": "Does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Once loaded, the PWA can be used offline thanks to the service worker. Data is persisted in IndexedDB." } },
+      { "@type": "Question", "name": "What is HMG Academy?", "acceptedAnswer": { "@type": "Answer", "text": "HMG Academy is the educational arm of HMG Concepts, a Lagos-based EdTech and technology company founded by Adewale Samson Adeagbo in 2015. HMG Academy provides virtual tutoring, CBT systems, LMS platforms, and now data science tools like DataFlow Studio." } }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "./" },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": "./features.html" },
+      { "@type": "ListItem", "position": 3, "name": "Modules", "item": "./modules.html" },
+      { "@type": "ListItem", "position": 4, "name": "Pricing", "item": "./pricing.html" },
+      { "@type": "ListItem", "position": 5, "name": "Documentation", "item": "./docs.html" },
+      { "@type": "ListItem", "position": 6, "name": "Launch Studio", "item": "./app.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="./" class="nav-brand">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy Logo" class="nav-brand-logo">
+      <div class="nav-brand-text">
+        <strong>HMG Academy</strong>
+        <small>DataFlow Studio v14.0</small>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    <div class="nav-links" id="navLinks" role="navigation">
+      <a href="./">Home</a>
+      <a href="./features.html">Features</a>
+      <a href="./modules.html">70 Modules</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./about.html">About</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./app.html" class="nav-cta">🚀 Launch Studio</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="flex items-center justify-center gap-4 mb-4 animate-fadeIn" style="flex-wrap:wrap;">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" style="height:60px; width:auto; border-radius:8px;">
+      <span class="badge badge-gold">HMG Academy Edition · v14.0</span>
+    </div>
+    <h1 class="animate-fadeIn">DataFlow Studio Ultimate</h1>
+    <p class="lead animate-fadeIn">
+      <strong>70 Browser-Native Modules</strong> · No code · No AI API costs · No server<br>
+      Built by <strong>Adewale Samson Adeagbo</strong> for HMG Academy, a subsidiary of HMG Concepts, Lagos, Nigeria
+    </p>
+    <div class="hero-actions animate-fadeIn">
+      <a href="./app.html" class="btn btn-primary btn-lg">🚀 Launch Studio Free</a>
+      <a href="./pricing.html" class="btn btn-secondary btn-lg">💳 See Plans</a>
+      <a href="./features.html" class="btn btn-outline btn-lg">📋 Explore Features</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-value">70</div><div class="stat-label">Modules</div></div>
+      <div class="stat"><div class="stat-value">₦0</div><div class="stat-label">AI API Cost</div></div>
+      <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Client-Side</div></div>
+      <div class="stat"><div class="stat-value">9</div><div class="stat-label">Pillars</div></div>
+      <div class="stat"><div class="stat-value">.ipynb</div><div class="stat-label">Export</div></div>
+      <div class="stat"><div class="stat-value">PWA</div><div class="stat-label">Install</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" aria-label="About HMG Academy" style="background:var(--clr-surface);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Part of the HMG Concepts Ecosystem</h2>
+      <p>HMG Academy is the educational arm of HMG Concepts — a Lagos-based ecosystem of 4 brands serving Nigerian learners and businesses since 2015.</p>
+    </div>
+    <div class="grid grid-4">
+      <a href="https://hmgconcepts.pages.dev/" target="_blank" rel="noopener" class="feature-card" style="text-align:center">
+        <span class="icon">🏢</span>
+        <h3>HMG Concepts</h3>
+        <p>Parent company. Lagos, Nigeria. Est. 2015.</p>
+      </a>
+      <a href="https://hmgacademy.pages.dev/" target="_blank" rel="noopener" class="feature-card" style="text-align:center">
+        <span class="icon">🎓</span>
+        <h3>HMG Academy</h3>
+        <p>Virtual school. CBT, LMS, tutoring, exam prep. <strong>Hosts DataFlow Studio.</strong></p>
+        <span class="tag tag-gold">YOU ARE HERE</span>
+      </a>
+      <a href="https://hmgtechnologies.pages.dev/" target="_blank" rel="noopener" class="feature-card" style="text-align:center">
+        <span class="icon">💻</span>
+        <h3>HMG Technologies</h3>
+        <p>AI tools, automation, dashboards.</p>
+      </a>
+      <a href="https://hmgmedia.pages.dev/" target="_blank" rel="noopener" class="feature-card" style="text-align:center">
+        <span class="icon">📢</span>
+        <h3>HMG Media</h3>
+        <p>Audio, visual, audiovisual content production.</p>
+      </a>
+      <a href="https://hmggospel.pages.dev/" target="_blank" rel="noopener" class="feature-card" style="text-align:center">
+        <span class="icon">✝️</span>
+        <h3>HMG Gospel</h3>
+        <p>Digital evangelism, FaithTech tools.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="All Features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Everything Your Data Needs. <span class="text-brand">All in One Platform.</span></h2>
+      <p>From your first dataset load to enterprise governance — every workflow is covered, every feature has a plain-English explanation.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="feature-card">
+        <span class="icon">📥</span>
+        <h3>Universal Ingest</h3>
+        <p>CSV, Excel, JSON, Parquet, REST APIs. Sample datasets. Synthetic data generation.</p>
+        <span class="tag tag-free">7 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">🧹</span>
+        <h3>Quality & Cleaning</h3>
+        <p>15-check audit, 6 imputation strategies, 3 outlier methods, column manager, joins.</p>
+        <span class="tag tag-free">8 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">📊</span>
+        <h3>Visualisation</h3>
+        <p>14+ Plotly charts, advanced charts, pivot tables, dashboards, geospatial maps.</p>
+        <span class="tag tag-free">7 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">📐</span>
+        <h3>Statistics</h3>
+        <p>T-tests, ANOVA, Chi-square, correlations, time series, forecasting, anomaly detection, NLP.</p>
+        <span class="tag tag-pro">6 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">🤖</span>
+        <h3>Machine Learning</h3>
+        <p>AutoML leaderboard, 7 algorithms, feature engineering, neural networks, SHAP.</p>
+        <span class="tag tag-pro">6 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">🗄️</span>
+        <h3>SQL Console</h3>
+        <p>Full SQLite3 in your browser. Multi-statement queries. Visual query builder.</p>
+        <span class="tag tag-pro">3 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">🔐</span>
+        <h3>Privacy & PII</h3>
+        <p>Auto-detect emails, BVN, NIN, phones. 4 masking methods. GDPR/NDPR compliant.</p>
+        <span class="tag tag-pro">2 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">⚖️</span>
+        <h3>Compliance Center</h3>
+        <p>25-point de-risking checks. NDPR/GDPR/HIPAA/SOC2 evidence. CI YAML export.</p>
+        <span class="tag tag-enterprise">2 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">🏢</span>
+        <h3>Enterprise Governance</h3>
+        <p>Lineage, contracts, RBAC, audit, retention, DR, governance logs.</p>
+        <span class="tag tag-enterprise">13 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">🎓</span>
+        <h3>HMG Academy EdTech</h3>
+        <p>Tutor, learning hub, roadmap, tutorials, projects, glossary, quiz.</p>
+        <span class="tag tag-gold">9 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">📝</span>
+        <h3>Reporting</h3>
+        <p>Python REPL, <strong>.ipynb export</strong>, storytelling, export, OpenAPI generation.</p>
+        <span class="tag tag-pro">6 modules</span>
+      </article>
+      <article class="feature-card">
+        <span class="icon">🤖</span>
+        <h3>Rule-Based Copilot</h3>
+        <p>SQL builder, SQL copilot, hypothesis Pro, JSON validator, 3D outliers, ROC arena, K-S synthetic eval.</p>
+        <span class="tag tag-new">8 modules</span>
+      </article>
+    </div>
+    <div class="text-center mt-6">
+      <a href="./modules.html" class="btn btn-outline btn-lg">📋 View All 70 Modules →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--clr-surface);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Built by Adewale Samson Adeagbo</h2>
+      <p>AI-Augmented Solutions Developer · Data Scientist · EdTech Builder · Virtual Tutor</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="feature-card">
+        <h3>🏫 EdTech Builder</h3>
+        <p>15+ years in Nigerian classrooms. Built CBT Pro (live in real schools), 11 LMS platforms, student analytics.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📊 DataTech Builder</h3>
+        <p>7 end-to-end ML models deployed across 7 industries. 11 interactive data simulators.</p>
+      </div>
+      <div class="feature-card">
+        <h3>✝️ FaithTech Builder</h3>
+        <p>Every platform is a pulpit. HMG Gospel for digital evangelism.</p>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a href="https://cssadewale.pages.dev/" rel="noopener" target="_blank" class="btn btn-outline">View Adewale's Portfolio →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Pricing">
+  <div class="container">
+    <div class="section-header">
+      <h2>Simple, Transparent Pricing</h2>
+      <p>Start with a 1-day free trial. No payment required. Affordable plans. ₦0 AI API costs forever.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">🎓 Free Trial</div>
+        <div class="pricing-price">₦0<small>1 day full access</small></div>
+        <ul class="pricing-features">
+          <li>All 70 modules</li>
+          <li>Upload up to 50MB</li>
+          <li>14+ chart types</li>
+          <li>SQL Console</li>
+          <li>PWA install</li>
+          <li>No AI API</li>
+          <li>AutoML Leaderboard</li>
+        </ul>
+        <a href="./app.html" class="btn btn-outline">Start Free</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">💡 Essential</div>
+        <div class="pricing-price">₦3,500<small>/month (~$4)</small></div>
+        <ul class="pricing-features">
+          <li>Everything in Free</li>
+          <li>200MB uploads</li>
+          <li>SQL Query Console</li>
+          <li>Hypothesis testing</li>
+          <li>What-If Analysis</li>
+          <li>Data Monitor & Alerts</li>
+          <li>Email support</li>
+        </ul>
+        <a href="./contact.html" class="btn btn-outline">Get Essential</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="badge">Most Popular</div>
+        <div class="pricing-tier">⚡ Professional</div>
+        <div class="pricing-price">₦8,500<small>/month (~$10)</small></div>
+        <ul class="pricing-features">
+          <li>Everything in Essential</li>
+          <li>Unlimited dataset size</li>
+          <li>Full ML Pipeline</li>
+          <li>Feature Engineering</li>
+          <li>Privacy & PII Masking</li>
+          <li>Advanced Charts</li>
+          <li>Data Contracts</li>
+          <li>Priority WhatsApp</li>
+        </ul>
+        <a href="./contact.html" class="btn btn-primary">Get Professional</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">🏢 Enterprise</div>
+        <div class="pricing-price">₦25,000<small>/month (~$30)</small></div>
+        <ul class="pricing-features">
+          <li>Everything in Pro</li>
+          <li>Compliance Center</li>
+          <li>Disaster Recovery</li>
+          <li>Retention Policy</li>
+          <li>API Doc Generator</li>
+          <li>RBAC + 8 roles</li>
+          <li>Full Audit Trail</li>
+          <li>Data Lineage</li>
+          <li>Dedicated manager</li>
+        </ul>
+        <a href="./contact.html" class="btn btn-outline">Get Enterprise</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section text-center" aria-label="Get Started">
+  <div class="container">
+    <h2>Ready to Transform Your Data?</h2>
+    <p class="lead mb-5">No code. No AI API costs. No barriers. Just 70 powerful modules that turn raw data into actionable insights.</p>
+    <div class="flex gap-3 justify-center" style="flex-wrap:wrap;">
+      <a href="./app.html" class="btn btn-primary btn-lg">🚀 Start Free — No Payment</a>
+      <a href="https://wa.me/2348100866322" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">💬 WhatsApp Adewale</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" class="footer-brand-logo">
+        <strong style="margin-top:8px; display:block">HMG Academy</strong>
+        <p>The complete no-code data operations platform. 70 modules. 100% free. No AI API. Built by Adewale Samson Adeagbo.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Product</h6>
+        <a href="./features.html">Features</a>
+        <a href="./modules.html">70 Modules</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="./app.html">Launch Studio</a>
+      </div>
+      <div class="footer-col">
+        <h6>Resources</h6>
+        <a href="./docs.html">Documentation</a>
+        <a href="./faq.html">FAQ</a>
+        <a href="./deployment.html">Deployment</a>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <a href="./about.html">About</a>
+        <a href="./contact.html">Contact</a>
+        <a href="https://cssadewale.pages.dev/" rel="noopener" target="_blank">Builder Profile</a>
+      </div>
+      <div class="footer-col">
+        <h6>Legal</h6>
+        <a href="./license.html">License (MIT)</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./security.html">Security</a>
+      </div>
+    </div>
+    <div class="footer-ecosystem">
+      <a href="https://hmgconcepts.pages.dev/" class="footer-eco-link" target="_blank" rel="noopener">🏢 HMG Concepts</a>
+      <a href="https://hmgacademy.pages.dev/" class="footer-eco-link" target="_blank" rel="noopener">🎓 HMG Academy</a>
+      <a href="https://hmgtechnologies.pages.dev/" class="footer-eco-link" target="_blank" rel="noopener">💻 HMG Technologies</a>
+      <a href="https://hmgmedia.pages.dev/" class="footer-eco-link" target="_blank" rel="noopener">📢 HMG Media</a>
+      <a href="https://hmggospel.pages.dev/" class="footer-eco-link" target="_blank" rel="noopener">✝️ HMG Gospel</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HMG Academy, a subsidiary of HMG Concepts · Lagos, Nigeria</span>
+      <span>v14.0.0 · Built by <a href="https://cssadewale.pages.dev/">Adewale Samson Adeagbo</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.documentElement.dataset.theme = 'light';
+  }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./static/service-worker.js').catch(() => {});
+  }
+</script>
+
+</body>
+</html>

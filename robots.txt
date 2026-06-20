@@ -1,0 +1,7 @@
+# DataFlow Studio v14.0 — HMG Academy Edition
+
+User-agent: *
+Allow: /
+Disallow: /app.html
+
+Sitemap: /sitemap.xml

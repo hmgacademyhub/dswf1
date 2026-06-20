@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-NG" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | DataFlow Studio v14.0 — HMG Academy Edition</title>
+  <meta name="description" content="Get in touch with Adewale Samson Adeagbo / HMG Academy. WhatsApp, email, contact form.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="./contact.html">
+  <link rel="manifest" href="./static/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./assets/images/hmg-academy-logo.png">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="./" class="nav-brand">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" class="nav-brand-logo">
+      <div class="nav-brand-text"><strong>HMG Academy</strong><small>DataFlow Studio v14.0</small></div>
+    </a>
+    <button class="nav-toggle">☰</button>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="./features.html">Features</a>
+      <a href="./modules.html">70 Modules</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./about.html">About</a>
+      <a href="./docs.html">Docs</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./contact.html" class="active">Contact</a>
+      <a href="./app.html" class="nav-cta">🚀 Launch Studio</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb container"><a href="./">Home</a> › <span>Contact</span></nav>
+
+<main class="content-page">
+  <div class="container">
+    <div class="flex items-center gap-3 mb-4">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" style="height:48px; width:auto; border-radius:6px;">
+      <span class="badge badge-gold">HMG Academy Edition</span>
+    </div>
+    <h1>📬 Contact Us</h1>
+    <p class="lead">Have questions, feedback, or want to discuss enterprise plans? Reach out!</p>
+
+    <div class="grid grid-3 mt-6 mb-6">
+      <article class="feature-card" style="text-align:center">
+        <span class="icon">💬</span>
+        <h3>WhatsApp (Fastest)</h3>
+        <p>+234 810 086 6322</p>
+        <a href="https://wa.me/2348100866322" class="btn btn-primary mt-3" target="_blank" rel="noopener">💬 Open WhatsApp</a>
+      </article>
+      <article class="feature-card" style="text-align:center">
+        <span class="icon">📧</span>
+        <h3>Email</h3>
+        <p>adeagboadewalesamson@gmail.com</p>
+        <a href="mailto:adeagboadewalesamson@gmail.com" class="btn btn-secondary mt-3">📧 Send Email</a>
+      </article>
+      <article class="feature-card" style="text-align:center">
+        <span class="icon">🌐</span>
+        <h3>Websites</h3>
+        <p>cssadewale.pages.dev</p>
+        <a href="https://cssadewale.pages.dev/" class="btn btn-outline mt-3" target="_blank" rel="noopener">🌐 Visit Profile</a>
+      </article>
+    </div>
+
+    <h2>📋 Contact Form</h2>
+    <form class="card" id="contactForm" style="max-width:600px">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-control" name="name" required></div>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control" name="email" required></div>
+      </div>
+      <div class="form-group"><label class="form-label">Subject</label>
+        <select class="form-control" name="subject">
+          <option>General Enquiry</option><option>Pricing / Plans</option><option>Enterprise Plan</option>
+          <option>Custom Feature Request</option><option>Bug Report</option><option>Partnership</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-control" name="message" rows="6" required></textarea></div>
+      <button type="submit" class="btn btn-primary btn-lg">📨 Send Message</button>
+    </form>
+
+    <script>
+      document.getElementById('contactForm')?.addEventListener('submit', e => {
+        e.preventDefault();
+        const d = new FormData(e.target);
+        const subject = encodeURIComponent('[DataFlow v14] ' + d.get('subject'));
+        const body = encodeURIComponent(`Name: ${d.get('name')}\nEmail: ${d.get('email')}\n\n${d.get('message')}`);
+        window.location.href = `mailto:adeagboadewalesamson@gmail.com?subject=${subject}&body=${body}`;
+      });
+    </script>
+
+    <h2 class="mt-8">🕒 Response Times</h2>
+    <ul>
+      <li>📞 WhatsApp: Usually within 1-2 hours during business hours (WAT)</li>
+      <li>📧 Email: Within 24 hours</li>
+      <li>🏢 Enterprise: Within 4 business hours</li>
+    </ul>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="text-center text-muted">© 2026 HMG Academy · Built by <a href="https://cssadewale.pages.dev/">Adewale Samson Adeagbo</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

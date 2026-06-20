@@ -1,0 +1,39 @@
+{
+  "name": "dataflow-studio-hmg-academy",
+  "version": "14.0.0",
+  "description": "70-module browser-native data operations workbench. 100% client-side JavaScript. No AI API. Built by HMG Academy (subsidiary of HMG Concepts).",
+  "main": "app.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "npx serve .",
+    "deploy:vercel": "npx vercel --prod",
+    "deploy:netlify": "npx netlify-cli deploy --prod --dir=.",
+    "deploy:cloudflare": "npx wrangler pages deploy . --project-name=dataflow"
+  },
+  "keywords": [
+    "data-science",
+    "machine-learning",
+    "hmg-academy",
+    "hmg-concepts",
+    "adewale-samson-adeagbo",
+    "no-code",
+    "enterprise",
+    "ndpr",
+    "gdpr",
+    "free-tools",
+    "browser-native",
+    "client-side",
+    "pwa",
+    "jupyter",
+    "ipynb",
+    "secure"
+  ],
+  "author": {
+    "name": "Adewale Samson Adeagbo",
+    "email": "adeagboadewalesamson@gmail.com",
+    "url": "https://cssadewale.pages.dev/"
+  },
+  "license": "MIT",
+  "homepage": "https://hmgacademy.pages.dev/",
+  "engines": { "node": ">=14" }
+}

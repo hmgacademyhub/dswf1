@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-NG" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>DataFlow Studio v14.0 — HMG Academy Edition | 70-Module Browser-Native Workbench</title>
+  <meta name="description" content="70+ module browser-native data operations workbench. 100% client-side. No AI API. No server. Built by Adewale Samson Adeagbo for HMG Academy, a subsidiary of HMG Concepts, Lagos, Nigeria.">
+  <meta name="keywords" content="data analysis, machine learning, HMG Academy, Adewale Samson Adeagbo, data visualization, no-code, enterprise, NDPR, GDPR, free tools, browser-native, data science, SQL, privacy, compliance, Lagos, Nigeria, PWA, client-side">
+  <meta name="author" content="Adewale Samson Adeagbo">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="DataFlow Studio">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://*.tile.openstreetmap.org data: blob: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: blob: https://*.tile.openstreetmap.org https:;">
+
+  <link rel="canonical" href="./app.html">
+  <link rel="manifest" href="./static/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./assets/images/hmg-academy-logo.png">
+  <link rel="apple-touch-icon" href="./assets/images/hmg-academy-logo.png">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/arquero@5.4.0/dist/arquero.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.33.0/plotly.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-statistics@7.8.3/dist/simple-statistics.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jstat@1.9.6/dist/jstat.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tensorflow@4.20.0/dist/tf.min.js"></script>
+
+  <style>
+    #appLoader { position: fixed; inset: 0; background: var(--clr-bg); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; z-index: 9999; }
+    #appLoader .spinner { width: 48px; height: 48px; border-width: 4px; }
+    #appLoaderText { color: var(--clr-text-muted); font-size: 0.95rem; }
+    #appLoader.hide { opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+  </style>
+</head>
+<body>
+
+<div id="appLoader">
+  <div class="spinner"></div>
+  <div id="appLoaderText">Initialising DataFlow Studio v14.0...</div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<div class="cmd-palette-overlay" id="cmdPaletteOverlay"></div>
+<div class="cmd-palette" id="cmdPalette" role="dialog" aria-label="Command palette">
+  <input type="text" class="cmd-palette-input" id="cmdPaletteInput" placeholder="Type a module name or search... (Ctrl+K)" autocomplete="off">
+  <div class="cmd-palette-list" id="cmdPaletteList"></div>
+  <div class="cmd-palette-hint">
+    <span>↑↓ Navigate · ↵ Select</span>
+    <span>ESC Close</span>
+  </div>
+</div>
+
+<div class="drawer-overlay" id="settingsOverlay"></div>
+<aside class="drawer" id="settingsDrawer" role="complementary" aria-label="Settings">
+  <div class="drawer-header">
+    <h3>⚙️ Settings</h3>
+    <button class="btn btn-ghost btn-sm" id="closeSettings" aria-label="Close settings">✕</button>
+  </div>
+  <div class="drawer-body">
+    <div class="form-group">
+      <label class="form-label">Theme</label>
+      <select class="form-control" id="themeSelect">
+        <option value="auto">Auto (System)</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Currency</label>
+      <select class="form-control" id="currencySelect">
+        <option value="NGN">₦ Nigerian Naira</option>
+        <option value="USD">$ US Dollar</option>
+        <option value="EUR">€ Euro</option>
+        <option value="GBP">£ British Pound</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Language</label>
+      <select class="form-control" id="languageSelect">
+        <option value="en-NG">English (Nigeria)</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="yo">Yorùbá</option>
+        <option value="ig">Igbo</option>
+        <option value="ha">Hausa</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><input type="checkbox" id="enableAutoSave" checked> Auto-save datasets to browser</label>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-danger" id="clearAllData">🗑️ Clear All Local Data</button>
+      <small class="text-muted">Removes all uploaded data, snapshots, analyses from your browser.</small>
+    </div>
+    <div class="form-group">
+      <h4 class="mt-4 mb-2">🏢 About</h4>
+      <p><strong>DataFlow Studio Ultimate v14.0</strong></p>
+      <p class="text-muted">HMG Academy Edition · Built by Adewale Samson Adeagbo</p>
+      <p class="text-muted">Lagos, Nigeria · HMG Concepts Ecosystem</p>
+    </div>
+  </div>
+</aside>
+
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <h4>💬 HMG Academy Tutor</h4>
+      <button class="btn btn-ghost btn-sm" id="chatClose">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Hi! I'm a rule-based assistant (no AI API). I can help with DataFlow Studio modules, HMG Academy, and Adewale's projects. Try: "ML", "chart", "SQL", or "HMG".</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Ask a question...">
+      <button class="btn btn-primary btn-sm" id="chatSend">Send</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chatToggle" aria-label="Open chat">💬</button>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="./" class="nav-brand" aria-label="DataFlow Studio Home">
+      <img src="./assets/images/hmg-academy-logo.png" alt="HMG Academy" class="nav-brand-logo">
+      <div class="nav-brand-text">
+        <strong>HMG Academy</strong>
+        <small>DataFlow Studio v14.0</small>
+      </div>
+    </a>
+    <button class="mobile-menu-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
+    <div style="display:flex; gap:14px; align-items:center; font-size:0.82rem; color:var(--clr-text-muted); flex-wrap:wrap;">
+      <a href="./index.html" style="color:var(--clr-text-muted); text-decoration:none">🏠 Home</a>
+      <a href="./features.html" style="color:var(--clr-text-muted); text-decoration:none">Features</a>
+      <a href="./modules.html" style="color:var(--clr-text-muted); text-decoration:none">Modules</a>
+      <button class="btn btn-ghost btn-sm" onclick="Core.openCmd()" style="font-size:0.82rem">⌘K</button>
+      <button class="btn btn-ghost btn-sm" id="openSettingsTop" style="font-size:0.82rem">⚙️</button>
+      <span class="status-pill offline" id="dataStatus">No data</span>
+    </div>
+  </div>
+</nav>
+
+<div class="studio-layout">
+  <aside class="studio-sidebar" id="sidebar" role="navigation" aria-label="Modules">
+
+    <div class="mod-group">📊 Getting Started</div>
+    <button class="module-btn active" data-mod="home"><span class="module-btn-icon">🏠</span><span class="module-btn-label">Home</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="ingest"><span class="module-btn-icon">📥</span><span class="module-btn-label">1. Universal Ingest</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="ingest_batch"><span class="module-btn-icon">📂</span><span class="module-btn-label">2. Batch Ingest</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="grid"><span class="module-btn-icon">📋</span><span class="module-btn-label">3. Grid Editor</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="sim"><span class="module-btn-icon">🧪</span><span class="module-btn-label">4. Synthetic Data</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="profile"><span class="module-btn-icon">🔍</span><span class="module-btn-label">5. Profiler</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="profiler_pro"><span class="module-btn-icon">📊</span><span class="module-btn-label">6. Profiler Pro</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="prof_adv"><span class="module-btn-icon">🔬</span><span class="module-btn-label">7. Stat Profiler</span><span class="module-btn-tag pro">pro</span></button>
+
+    <div class="mod-group">🧹 Phase 2 — Clean & Transform</div>
+    <button class="module-btn" data-mod="quality"><span class="module-btn-icon">🧪</span><span class="module-btn-label">8. Quality Audit</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="clean"><span class="module-btn-icon">🧹</span><span class="module-btn-label">9. Cleaning</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="imbalance"><span class="module-btn-icon">⚖️</span><span class="module-btn-label">10. Class Imbalance</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="transform"><span class="module-btn-icon">🗂️</span><span class="module-btn-label">11. Column Manager</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="join"><span class="module-btn-icon">🔗</span><span class="module-btn-label">12. Join & Merge</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="diff"><span class="module-btn-icon">📊</span><span class="module-btn-label">13. Diff Engine</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="api_connector"><span class="module-btn-icon">🌐</span><span class="module-btn-label">14. REST Connector</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="search"><span class="module-btn-icon">🔎</span><span class="module-btn-label">15. Search & Compare</span><span class="module-btn-tag free">free</span></button>
+
+    <div class="mod-group">🎨 Phase 3 — Visual</div>
+    <button class="module-btn" data-mod="visual"><span class="module-btn-icon">📈</span><span class="module-btn-label">16. Visual Explorer</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="adv_charts"><span class="module-btn-icon">📉</span><span class="module-btn-label">17. Advanced Charts</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="pygwalker"><span class="module-btn-icon">🎨</span><span class="module-btn-label">18. Drag-Drop Builder</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="pivot"><span class="module-btn-icon">🧮</span><span class="module-btn-label">19. Pivot Tables</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="dashboard"><span class="module-btn-icon">📊</span><span class="module-btn-label">20. Dashboard</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="whatif"><span class="module-btn-icon">📈</span><span class="module-btn-label">21. What-If</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="geospatial"><span class="module-btn-icon">🗺️</span><span class="module-btn-label">22. Geospatial</span><span class="module-btn-tag pro">pro</span></button>
+
+    <div class="mod-group">📐 Phase 4 — Stats & SQL</div>
+    <button class="module-btn" data-mod="stats"><span class="module-btn-icon">📐</span><span class="module-btn-label">23. Inferential Stats</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="sql"><span class="module-btn-icon">🗄️</span><span class="module-btn-label">24. SQL Console</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="timeseries"><span class="module-btn-icon">📅</span><span class="module-btn-label">25. Time Series</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="forecast"><span class="module-btn-icon">🔮</span><span class="module-btn-label">26. Holt-Winters</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="anomaly"><span class="module-btn-icon">🚨</span><span class="module-btn-label">27. Anomaly Detection</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="text_nlp"><span class="module-btn-icon">📝</span><span class="module-btn-label">28. NLP Engine</span><span class="module-btn-tag pro">pro</span></button>
+
+    <div class="mod-group">🤖 Phase 5 — ML & AutoML</div>
+    <button class="module-btn" data-mod="feature_sel"><span class="module-btn-icon">🧬</span><span class="module-btn-label">29. Feature Selection</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="feature"><span class="module-btn-icon">⚙️</span><span class="module-btn-label">30. Feature Eng</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="ml"><span class="module-btn-icon">🤖</span><span class="module-btn-label">31. AutoML</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="nnplay"><span class="module-btn-icon">🧠</span><span class="module-btn-label">32. Neural Net</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="explain"><span class="module-btn-icon">🔎</span><span class="module-btn-label">33. SHAP</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="model_registry"><span class="module-btn-icon">📦</span><span class="module-btn-label">34. Model Registry</span><span class="module-btn-tag pro">pro</span></button>
+
+    <div class="mod-group">📝 Reporting</div>
+    <button class="module-btn" data-mod="notebook"><span class="module-btn-icon">📓</span><span class="module-btn-label">35. Python REPL</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="report"><span class="module-btn-icon">📝</span><span class="module-btn-label">36. Report Builder (.ipynb)</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="story"><span class="module-btn-icon">📊</span><span class="module-btn-label">37. Storytelling</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="export"><span class="module-btn-icon">📤</span><span class="module-btn-label">38. Data Export</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="share"><span class="module-btn-icon">🚀</span><span class="module-btn-label">39. Bundle Share</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="api_doc"><span class="module-btn-icon">📡</span><span class="module-btn-label">40. OpenAPI Gen</span><span class="module-btn-tag pro">pro</span></button>
+
+    <div class="mod-group">🏢 Enterprise</div>
+    <button class="module-btn" data-mod="workflow"><span class="module-btn-icon">🧩</span><span class="module-btn-label">41. Workflow</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="lineage"><span class="module-btn-icon">🌿</span><span class="module-btn-label">42. Data Lineage</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="contracts"><span class="module-btn-icon">📜</span><span class="module-btn-label">43. Contracts</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="expectations"><span class="module-btn-icon">✅</span><span class="module-btn-label">44. Expectations</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="privacy"><span class="module-btn-icon">🔐</span><span class="module-btn-label">45. PII Masker</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="govern"><span class="module-btn-icon">🏢</span><span class="module-btn-label">46. Governance</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="catalog"><span class="module-btn-icon">📚</span><span class="module-btn-label">47. Data Catalog</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="monitor"><span class="module-btn-icon">🔔</span><span class="module-btn-label">48. Monitor</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="scheduler"><span class="module-btn-icon">⏱️</span><span class="module-btn-label">49. Scheduler</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="versions"><span class="module-btn-icon">🕘</span><span class="module-btn-label">50. Snapshots</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="retention"><span class="module-btn-icon">📋</span><span class="module-btn-label">51. Retention</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="disaster"><span class="module-btn-icon">🔄</span><span class="module-btn-label">52. DR</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="collab"><span class="module-btn-icon">👥</span><span class="module-btn-label">53. Team Notes</span><span class="module-btn-tag pro">pro</span></button>
+
+    <div class="mod-group">🤖 Copilot</div>
+    <button class="module-btn" data-mod="sql_builder"><span class="module-btn-icon">🏗️</span><span class="module-btn-label">62. SQL Builder</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="query_copilot"><span class="module-btn-icon">🤖</span><span class="module-btn-label">63. SQL Copilot</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="hypothesis_pro"><span class="module-btn-icon">📊</span><span class="module-btn-label">64. Hypothesis Pro</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="data_validator"><span class="module-btn-icon">🛡️</span><span class="module-btn-label">65. Schema Validator</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="outlier_3d"><span class="module-btn-icon">🌌</span><span class="module-btn-label">66. 3D Outliers</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="model_compare"><span class="module-btn-icon">⚔️</span><span class="module-btn-label">67. ROC Arena</span><span class="module-btn-tag pro">pro</span></button>
+    <button class="module-btn" data-mod="synthetic_eval"><span class="module-btn-icon">⚖️</span><span class="module-btn-label">68. Synthetic vs Real</span><span class="module-btn-tag ent">ent</span></button>
+    <button class="module-btn" data-mod="audit_export_ci"><span class="module-btn-icon">📜</span><span class="module-btn-label">69. SOC2 Audit</span><span class="module-btn-tag ent">ent</span></button>
+
+    <div class="mod-group">🎓 HMG Academy</div>
+    <button class="module-btn" data-mod="tutor"><span class="module-btn-icon">🧙‍♂️</span><span class="module-btn-label">54. AI Tutor</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="learn_hub"><span class="module-btn-icon">🎓</span><span class="module-btn-label">55. Learning Hub</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="roadmap"><span class="module-btn-icon">🗺️</span><span class="module-btn-label">56. Roadmap</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="tutorials"><span class="module-btn-icon">🎓</span><span class="module-btn-label">57. ML Labs</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="projects"><span class="module-btn-icon">🚀</span><span class="module-btn-label">58. Portfolio</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="glossary"><span class="module-btn-icon">📚</span><span class="module-btn-label">59. Glossary</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="quiz"><span class="module-btn-icon">🏆</span><span class="module-btn-label">60. CBT Quiz</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="settings"><span class="module-btn-icon">⚙️</span><span class="module-btn-label">61. Settings</span><span class="module-btn-tag free">free</span></button>
+    <button class="module-btn" data-mod="help"><span class="module-btn-icon">💡</span><span class="module-btn-label">70. Help & ⌘K</span><span class="module-btn-tag free">free</span></button>
+
+    <div class="sidebar-footer">
+      <strong>DataFlow Studio v14.0</strong><br>
+      70 Enterprise Modules<br>
+      100% Client-Side · No AI API<br>
+      <span style="color:var(--hmg-gold)">₦0 Free Forever</span><br>
+      © 2026 HMG Academy, Lagos<br>
+      <small>Built by Adewale Samson Adeagbo</small>
+    </div>
+  </aside>
+
+  <main class="studio-main" id="main" role="main">
+    <div class="studio-toolbar">
+      <div class="toolbar-title" id="toolbarTitle">Home</div>
+      <div class="toolbar-meta" id="toolbarMeta">No data loaded</div>
+    </div>
+  </main>
+</div>
+
+<script src="./assets/js/utils/storage.js"></script>
+<script src="./assets/js/utils/security.js"></script>
+<script src="./assets/js/utils/stats.js"></script>
+<script src="./assets/js/utils/ml.js"></script>
+<script src="./assets/js/utils/export.js"></script>
+<script src="./assets/js/core.js"></script>
+<script src="./assets/js/modules.js"></script>
+<script src="./assets/js/app.js"></script>
+
+</body>
+</html>
